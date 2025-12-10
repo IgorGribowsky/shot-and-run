@@ -1,0 +1,10 @@
+#titleLabel {
+    margin-top: 18%;
+    font-size: 32px;
+    unity-font-style: bold;
+}
+
+#nextLevelButton {
+    font-size: 24px;
+    margin: 0 30%;
+}

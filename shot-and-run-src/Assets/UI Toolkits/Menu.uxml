@@ -1,0 +1,5 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkits/Menu.uss?fileID=7433441132597879392&amp;guid=fce9626f6ccb6fe4ab2ffaf6acc1cdf5&amp;type=3#Menu" />
+    <ui:Label text="title text" name="titleLabel" style="-unity-text-align: upper-center;" />
+    <ui:Button text="button text" name="nextLevelButton" style="-unity-text-align: middle-center;" />
+</ui:UXML>
