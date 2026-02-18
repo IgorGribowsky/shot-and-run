@@ -1,4 +1,5 @@
 using Assets.Scripts.Domen.Enums;
+using Assets.Scripts.Domen.Helpers;
 using Scellecs.Morpeh;
 using System;
 using TMPro;
@@ -16,6 +17,7 @@ public class BonusAuthoring : MonoBehaviour
     private Stash<BonusCanvas> _bonusCanvasStash;
 
     [Inject] private World _world;
+    [Inject] private ICanvasBindingService _canvasBindingService;
 
     private void Awake()
     {
@@ -37,34 +39,7 @@ public class BonusAuthoring : MonoBehaviour
         bonus.BonusSign = bonusSign;
         bonus.Value = value;
 
-        BindBonusCanvas(entity);
-    }
-
-    private void BindBonusCanvas(Entity entity)
-    {
-        _bonusCanvasObj.transform.position = gameObject.transform.position;
-        _bonusCanvasObj.transform.Rotate(new Vector3(0, 90, 0));
-
-        //TODO MOVE TO HELPER
-        TMP_Text text = null;
-
-        foreach (Transform child in _bonusCanvasObj.transform)
-        {
-            if (child.CompareTag("CanvasText"))
-            {
-                text = child.GetComponent<TMP_Text>();
-            }
-        }
-
-        if (text == null)
-        {
-            throw new ArgumentNullException("BonusCanvas.Text");
-        }
-
-        ref var bonusCanvas = ref _bonusCanvasStash.Add(entity);
-        bonusCanvas.Text = text;
-        bonusCanvas.CanvasTransform = _bonusCanvasObj.transform;
-        bonusCanvas.IsTextUpdated = true;
+        _canvasBindingService.BindCanvasToEntity(entity, _bonusCanvasStash, _bonusCanvasObj);
     }
 
     private void OnDestroy()

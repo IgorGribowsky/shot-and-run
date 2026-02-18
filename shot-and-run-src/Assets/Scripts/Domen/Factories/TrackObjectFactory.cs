@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Domen.Enums;
+﻿using Assets.Scripts.Domen.Constants;
+using Assets.Scripts.Domen.Enums;
 using System;
 using UnityEngine;
 using Zenject;
@@ -19,11 +20,6 @@ namespace Assets.Scripts.Domen.Factories
         [Inject(Id = TrackObjectType.Boss)]
         private GameObject _bossPrefab;
 
-        //TODO MOVE TO CONSTS
-        private const float ZSpawnPosition = 35;
-        private const float YSpawnPosition = 0.5f;
-        private const float XTrackWidth = 5;
-
         public GameObject CreateByType(TrackObjectType type, int tracksCount, int trackNum)
         {
             GameObject prefab = type switch
@@ -40,22 +36,21 @@ namespace Assets.Scripts.Domen.Factories
 
             if (type == TrackObjectType.Boss)
             {
-                xPos = xLeftShift + (tracksCount / 2.0f - 0.5f) * XTrackWidth;
+                xPos = xLeftShift + (tracksCount / 2.0f - 0.5f) * GameConstants.XTrackWidth;
                 yPos = _bossPrefab.transform.position.y;
             }
             else if (type == TrackObjectType.Barrel)
             {
-                //TODO Move magical num to const
-                xPos = xLeftShift + trackNum * XTrackWidth - 1.54f;
-                yPos = YSpawnPosition;
+                xPos = xLeftShift + trackNum * GameConstants.XTrackWidth - GameConstants.BarrelHalfWidth;
+                yPos = GameConstants.YSpawnPosition;
             }
             else
             {
-                xPos = xLeftShift + trackNum * XTrackWidth;
-                yPos = YSpawnPosition;
+                xPos = xLeftShift + trackNum * GameConstants.XTrackWidth;
+                yPos = GameConstants.YSpawnPosition;
             }
 
-            return _container.InstantiatePrefab(prefab, new Vector3(xPos, yPos, ZSpawnPosition), prefab.transform.rotation, null);
+            return _container.InstantiatePrefab(prefab, new Vector3(xPos, yPos, GameConstants.ZSpawnPosition), prefab.transform.rotation, null);
         }
     }
 }

@@ -4,6 +4,6 @@ using UnityEngine;
 public interface ICanvas
 {
     bool IsTextUpdated { get; set; }
-    Transform CanvasTransform { get; }
-    TMP_Text Text { get; }
+    Transform CanvasTransform { get; set; }
+    TMP_Text Text { get; set; }
 }

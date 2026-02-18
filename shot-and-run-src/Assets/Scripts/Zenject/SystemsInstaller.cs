@@ -64,6 +64,7 @@ public class SystemsInstaller : MonoInstaller
         Container.BindInterfacesAndSelfTo<BonusCalculator>().AsSingle();
         Container.BindInterfacesAndSelfTo<TrackObjectFactory>().AsSingle();
         Container.BindInterfacesAndSelfTo<UnitFactory>().AsSingle();
+        Container.BindInterfacesAndSelfTo<CanvasBindingService>().AsSingle();
 
         Container.Bind<MenuController>().FromInstance(Menu.GetComponent<MenuController>()).AsSingle().NonLazy();
     }

@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.ECS.Systems.Abstract;
+﻿using Assets.Scripts.Domen.Constants;
+using Assets.Scripts.ECS.Systems.Abstract;
 using Scellecs.Morpeh;
 using UnityEngine;
 
@@ -18,12 +19,11 @@ namespace Assets.Scripts.ECS.Systems
 
         protected override Vector3 GetOffset(Entity entity)
         {
-            //TODO Move magical vectors to const
             return entity switch
             {
-                _ when _barrelsStash.Has(entity) => new Vector3(1.5f, 2.25f, 0),
-                _ when _bossStash.Has(entity) => new Vector3(0, 6, -6),
-                _ => new Vector3(0, 2.25f, 0)
+                _ when _barrelsStash.Has(entity) => CanvasConstants.HealthCanvasOffsetForBarrel,
+                _ when _bossStash.Has(entity) => CanvasConstants.HealthCanvasOffsetForBoss,
+                _ => CanvasConstants.HealthCanvasOffsetForArch
             };
         }
 

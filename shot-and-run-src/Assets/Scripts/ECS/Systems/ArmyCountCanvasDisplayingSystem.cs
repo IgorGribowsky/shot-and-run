@@ -1,4 +1,4 @@
-﻿using Assets.Scripts.Domen.Enums;
+﻿using Assets.Scripts.Domen.Constants;
 using Assets.Scripts.ECS.Systems.Abstract;
 using Scellecs.Morpeh;
 using UnityEngine;
@@ -9,8 +9,7 @@ namespace Assets.Scripts.ECS.Systems
     {
         protected override Vector3 GetOffset(Entity entity)
         {
-            //TODO Move magical vectors to const
-            return new Vector3(0, 2.5f, 0);
+            return CanvasConstants.ArmyCountCanvasOffset;
         }
 
         protected override void UpdateText(ref UnitsCount unitsCount, ref ArmyCountCanvas canvas)

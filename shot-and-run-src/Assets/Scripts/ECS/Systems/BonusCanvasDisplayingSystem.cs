@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Domen.Enums;
+﻿using Assets.Scripts.Domen.Constants;
+using Assets.Scripts.Domen.Enums;
 using Assets.Scripts.ECS.Systems.Abstract;
 using Scellecs.Morpeh;
 using UnityEngine;
@@ -17,10 +18,9 @@ namespace Assets.Scripts.ECS.Systems
 
         protected override Vector3 GetOffset(Entity entity)
         {
-            //TODO Move magical vectors to const
             return _barrelsStash.Has(entity)
-                ? new Vector3(1.5f, 0.5f, -1.25f)
-                : new Vector3(0, 0.5f, -0.75f);
+                ? CanvasConstants.BonusCanvasOffsetForBarrel
+                : CanvasConstants.BonusCanvasOffsetArch;
         }
 
         protected override void UpdateText(ref Bonus bonus, ref BonusCanvas canvas)

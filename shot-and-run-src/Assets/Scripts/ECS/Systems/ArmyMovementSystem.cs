@@ -1,4 +1,5 @@
-﻿using Scellecs.Morpeh;
+﻿using Assets.Scripts.Domen.Constants;
+using Scellecs.Morpeh;
 using UnityEngine;
 
 namespace Assets.Scripts.ECS.Systems
@@ -20,9 +21,6 @@ namespace Assets.Scripts.ECS.Systems
         private float _minX;
         private float _maxZ;
         private float _minZ;
-
-        //TODO MOVE TO CONSTS
-        private const float Speed = 35;
 
         public void OnAwake()
         {
@@ -82,8 +80,8 @@ namespace Assets.Scripts.ECS.Systems
                     if (pos.z > topUnitZ) topUnitZ = pos.z;
                 }
 
-                float moveX = movementDirection.x * deltaTime * Speed;
-                float moveZ = movementDirection.y * deltaTime * Speed;
+                float moveX = movementDirection.x * deltaTime * GameConstants.UnitsSpeed;
+                float moveZ = movementDirection.y * deltaTime * GameConstants.UnitsSpeed;
 
                 var x = CalculateMove(leftUnitX, rightUnitX, moveX, _minX, _maxX);
                 var z = CalculateMove(downUnitZ, topUnitZ, moveZ, _minZ, _maxZ);

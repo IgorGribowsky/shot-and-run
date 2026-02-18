@@ -16,6 +16,14 @@ public struct HealthCanvas : IComponent, ICanvas
         set => IsTextUpdated = value;
     }
 
-    Transform ICanvas.CanvasTransform => CanvasTransform;
-    TMP_Text ICanvas.Text => Text;
+    Transform ICanvas.CanvasTransform
+    {
+        get => CanvasTransform;
+        set => CanvasTransform = value;
+    }
+    TMP_Text ICanvas.Text
+    {
+        get => Text;
+        set => Text = value;
+    }
 }

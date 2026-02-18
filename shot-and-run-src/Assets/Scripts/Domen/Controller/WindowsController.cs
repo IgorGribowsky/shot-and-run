@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Domen.Constants;
+using UnityEngine;
 
 namespace Assets.Scripts.Domen.Controller
 {
@@ -11,7 +12,7 @@ namespace Assets.Scripts.Domen.Controller
                 float x = Input.GetAxis("Mouse X");
                 float y = Input.GetAxis("Mouse Y");
 
-                var moveVector = new Vector2(x, y);
+                var moveVector = new Vector2(x, y) * InputConstants.WindowsSensivity;
 
                 return moveVector;
             }

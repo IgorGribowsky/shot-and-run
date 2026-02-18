@@ -2,6 +2,7 @@ using Scellecs.Morpeh;
 using UnityEngine;
 using Zenject;
 using Assets.Scripts.Domen.SerializableData;
+using Assets.Scripts.Domen.Constants;
 
 public class LevelAuthoring : MonoBehaviour, IEntityAuthoring
 {
@@ -18,10 +19,6 @@ public class LevelAuthoring : MonoBehaviour, IEntityAuthoring
     [Inject] private World _world;
 
     public Entity Entity => _entity;
-
-    //TODO MOVE TO CONSTANTS
-    public const float MinZBorder = -1f;
-    public const float MaxZBorder = 3f;
 
     private void Awake()
     {
@@ -40,11 +37,11 @@ public class LevelAuthoring : MonoBehaviour, IEntityAuthoring
         _levelStash.Add(_entity);
 
         ref var borders = ref _movementBordersStash.Add(_entity);
-        borders.MinZ = MinZBorder;
-        borders.MaxZ = MaxZBorder;
+        borders.MinZ = GameConstants.ArmyMinZBorder;
+        borders.MaxZ = GameConstants.ArmyMaxZBorder;
 
         var xScale = Level.TrackCount * 0.5f;
-        var maxX = xScale * 5f - 0.25f;
+        var maxX = xScale * GameConstants.XTrackWidth - GameConstants.ArmyXOffsetBorder;
         var minX = -maxX;
         Plate.transform.localScale = new Vector3(xScale, 1, 10);
 

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Domen.Constants;
+using UnityEngine;
 using Zenject;
 
 namespace Assets.Scripts.Domen.Controller
@@ -7,15 +8,12 @@ namespace Assets.Scripts.Domen.Controller
     {
         [Inject] private Joystick _joystick;
 
-        //TODO MOVE TO CONSTS
-        private const float Sensitivity = 0.3f;
-
         public Vector2 GetDirection()
         {
             float x = _joystick.Horizontal;
             float y = _joystick.Vertical;
 
-            var moveVector = new Vector2(x, y) * Sensitivity;
+            var moveVector = new Vector2(x, y) * InputConstants.AndroidSensivity;
             return moveVector;
         }
     }

@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Domen.Enums;
+﻿using Assets.Scripts.Domen.Constants;
+using Assets.Scripts.Domen.Enums;
 using Scellecs.Morpeh;
 using UnityEngine;
 
@@ -12,10 +13,6 @@ namespace Assets.Scripts.ECS.Systems
 
         private Stash<View> _viewStash;
         private Stash<CameraEntity> _cameraStash;
-
-        //TODO MOVE TO CONST
-        private const float BossFightCameraY = 7f;
-        private const float BossFightCameraXAng = 30f;
 
         public void OnAwake()
         {
@@ -45,17 +42,17 @@ namespace Assets.Scripts.ECS.Systems
             int completedRotationSteps = 0;
             var newY = cameraView.Transform.position.y + deltaTime;
 
-            if (newY > BossFightCameraY)
+            if (newY > GameConstants.BossFightCameraY)
             {
-                newY = BossFightCameraY;
+                newY = GameConstants.BossFightCameraY;
                 completedRotationSteps += 1;
             }
 
             var newXAng = cameraView.Transform.eulerAngles.x - deltaTime * 10;
 
-            if (newXAng < BossFightCameraXAng)
+            if (newXAng < GameConstants.BossFightCameraXAng)
             {
-                newXAng = BossFightCameraXAng;
+                newXAng = GameConstants.BossFightCameraXAng;
                 completedRotationSteps += 1;
             }
 

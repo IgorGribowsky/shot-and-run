@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Domen.Factories;
+﻿using Assets.Scripts.Domen.Constants;
+using Assets.Scripts.Domen.Factories;
 using Scellecs.Morpeh;
 using UnityEngine;
 using Zenject;
@@ -14,9 +15,6 @@ namespace Assets.Scripts.ECS.Systems
 
         private Transform _armyTransform;
         private Entity _armyEntity;
-
-        //TODO MOVE TO CONSTS
-        private const float UnitSpreading = 2;
 
         [Inject] private IUnitFactory _unitFactory;
 
@@ -74,7 +72,7 @@ namespace Assets.Scripts.ECS.Systems
 
         private void CreateUnit()
         {
-            var randomVector = Random.insideUnitCircle * UnitSpreading;
+            var randomVector = Random.insideUnitCircle * GameConstants.UnitSpreading;
             var positionToAdd = _unitFactory.UnitsCount != 0
                 ? new Vector3(randomVector.x, 0, randomVector.y)
                 : new Vector3(0, 0, 0);

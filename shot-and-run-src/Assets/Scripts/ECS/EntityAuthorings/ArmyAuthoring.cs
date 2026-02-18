@@ -1,8 +1,10 @@
+using Assets.Scripts.Domen.Helpers;
 using Scellecs.Morpeh;
 using System;
 using TMPro;
 using UnityEngine;
 using Zenject;
+using static UnityEngine.EventSystems.EventTrigger;
 
 public class ArmyAuthoring : MonoBehaviour, IEntityAuthoring
 {
@@ -28,6 +30,7 @@ public class ArmyAuthoring : MonoBehaviour, IEntityAuthoring
     private GameObject _armyCountCanvasInstance;
 
     [Inject] private World _world;
+    [Inject] private ICanvasBindingService _canvasBindingService;
 
     public Entity Entity => _entity;
 
@@ -44,7 +47,7 @@ public class ArmyAuthoring : MonoBehaviour, IEntityAuthoring
 
         ConfigureComponents();
 
-        BindArmyCountCanvas();
+        _canvasBindingService.BindCanvasToEntity(_entity, _armyCountCanvasStash, _armyCountCanvasObj);
     }
 
     public void ConfigureComponents()
@@ -64,33 +67,6 @@ public class ArmyAuthoring : MonoBehaviour, IEntityAuthoring
         armyStats.AttackSpeed = AttackSpeed;
         armyStats.BulletSpeed = BulletSpeed;
         armyStats.BulletRange = BulletRange;
-    }
-
-    private void BindArmyCountCanvas()
-    {
-        _armyCountCanvasObj.transform.position = gameObject.transform.position;
-        _armyCountCanvasObj.transform.Rotate(new Vector3(0, 90, 0));
-
-        //TODO MOVE TO HELPER
-        TMP_Text text = null;
-
-        foreach (Transform child in _armyCountCanvasObj.transform)
-        {
-            if (child.CompareTag("CanvasText"))
-            {
-                text = child.GetComponent<TMP_Text>();
-            }
-        }
-
-        if (text == null)
-        {
-            throw new ArgumentNullException("ArmyCountCanvas.Text");
-        }
-
-        ref var armyCountCanvas = ref _armyCountCanvasStash.Add(Entity);
-        armyCountCanvas.Text = text;
-        armyCountCanvas.CanvasTransform = _armyCountCanvasObj.transform;
-        armyCountCanvas.IsTextUpdated = true;
     }
 
     private void OnDestroy()

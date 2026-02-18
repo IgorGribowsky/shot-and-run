@@ -1,6 +1,5 @@
+using Assets.Scripts.Domen.Helpers;
 using Scellecs.Morpeh;
-using System;
-using TMPro;
 using UnityEngine;
 using Zenject;
 
@@ -16,6 +15,7 @@ public class HealthAuthoring : MonoBehaviour
 
 
     [Inject] private World _world;
+    [Inject] private ICanvasBindingService _canvasBindingService;
 
     private void Awake()
     {
@@ -36,37 +36,8 @@ public class HealthAuthoring : MonoBehaviour
         ref var bonus = ref _healthStash.Get(entity);
         bonus.Value = value;
 
-        BindHealthCanvas(entity);
+        _canvasBindingService.BindCanvasToEntity(entity, _healthCanvasStash, _healthCanvasObj);
     }
-
-    private void BindHealthCanvas(Entity entity)
-    {
-        _healthCanvasObj.transform.position = gameObject.transform.position;
-        //TODO Move magical vector to const
-        _healthCanvasObj.transform.Rotate(new Vector3(0, 90, 0));
-
-        //TODO MOVE TO HELPER
-        TMP_Text text = null;
-
-        foreach (Transform child in _healthCanvasObj.transform)
-        {
-            if (child.CompareTag("CanvasText"))
-            {
-                text = child.GetComponent<TMP_Text>();
-            }
-        }
-
-        if (text == null)
-        {
-            throw new ArgumentNullException("HealthCanvas.Text");
-        }
-
-        ref var healthCanvas = ref _healthCanvasStash.Add(entity);
-        healthCanvas.Text = text;
-        healthCanvas.CanvasTransform = _healthCanvasObj.transform;
-        healthCanvas.IsTextUpdated = true;
-    }
-
 
     private void OnDestroy()
     {
