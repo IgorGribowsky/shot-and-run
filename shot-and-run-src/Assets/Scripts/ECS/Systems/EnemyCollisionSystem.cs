@@ -18,6 +18,7 @@ namespace Assets.Scripts.ECS.Systems
         private Stash<ArmyStats> _armyStatsStash;
         private Stash<Health> _healthStash;
         private Stash<HealthCanvas> _healthCanvasStash;
+        private Stash<ArmyCountCanvas> _armyCountCanvasStash;
 
         private Entity _armyEntity;
 
@@ -43,6 +44,7 @@ namespace Assets.Scripts.ECS.Systems
 
             _collisionsStash = World.GetStash<CollisionEvent>();
             _unitsCountStash = World.GetStash<UnitsCount>();
+            _armyCountCanvasStash = World.GetStash<ArmyCountCanvas>();
             _unitsStash = World.GetStash<Unit>();
             _bulletStash = World.GetStash<Bullet>();
             _armyStatsStash = World.GetStash<ArmyStats>();
@@ -69,6 +71,8 @@ namespace Assets.Scripts.ECS.Systems
                         {
                             ref var unitsCount = ref _unitsCountStash.Get(_armyEntity);
                             unitsCount.Value -= 1;
+                            ref var armyCountCanvas = ref _armyCountCanvasStash.Get(_armyEntity);
+                            armyCountCanvas.IsTextUpdated = true;
                         }
                     }
                     else if (_bulletStash.Has(otherEntity))
