@@ -1,12 +1,14 @@
 using UnityEngine;
+using Zenject;
 
 public abstract class ButtonActionBase : MonoBehaviour
 {
     protected LevelManager LevelManager;
 
-    private void Start()
+    [Inject]
+    private void Construct(LevelManager levelManager)
     {
-        LevelManager = GameObject.FindGameObjectWithTag("GameController")?.GetComponent<LevelManager>();
+        LevelManager = levelManager;
     }
 
     public abstract void Act();

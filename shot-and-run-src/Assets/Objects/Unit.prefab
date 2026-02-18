@@ -11,9 +11,8 @@ GameObject:
   - component: {fileID: 4489387499520223604}
   - component: {fileID: 2335108887471523951}
   - component: {fileID: 7812315317785085102}
-  - component: {fileID: -3459488628954296859}
   - component: {fileID: -5701778899998009280}
-  - component: {fileID: 3679243770043644317}
+  - component: {fileID: -1747589650487974258}
   m_Layer: 0
   m_Name: Unit
   m_TagString: Untagged
@@ -83,18 +82,6 @@ CapsuleCollider:
   m_Height: 1.8
   m_Direction: 1
   m_Center: {x: 0, y: 0.75, z: 0}
---- !u!114 &-3459488628954296859
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 191298059050307108}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3af693b30fea9f744b5472b811278138, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!54 &-5701778899998009280
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -102,10 +89,10 @@ Rigidbody:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 191298059050307108}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0
+  m_LinearDamping: 0
+  m_AngularDamping: 0
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -122,7 +109,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &3679243770043644317
+--- !u!114 &-1747589650487974258
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -131,10 +118,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 191298059050307108}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4efbf0d75f50601448dcfcb50b1a2fb1, type: 3}
+  m_Script: {fileID: 11500000, guid: 7e088d7b8ff53934a93392dda335dfc9, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
-  Bullet: {fileID: 6898231368475539652, guid: cfeb6044690a6c44e8b3e3a044ed1d52, type: 3}
+  m_EditorClassIdentifier: Assembly-CSharp::UnitAuthoring
 --- !u!1 &610041320080443728
 GameObject:
   m_ObjectHideFlags: 0
@@ -280,6 +266,9 @@ SkinnedMeshRenderer:
   m_RayTraceProcedural: 0
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -301,6 +290,7 @@ SkinnedMeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0

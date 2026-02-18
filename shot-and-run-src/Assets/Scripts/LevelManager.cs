@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,7 +8,7 @@ public class LevelManager : MonoBehaviour
 
     public string[] Levels;
 
-    public int CurrentLevel = 0;
+    public int CurrentLevel { get; set; }
 
     private void Awake()
     {
@@ -19,6 +20,7 @@ public class LevelManager : MonoBehaviour
 
         Instance = this;
         DontDestroyOnLoad(gameObject);
+        CurrentLevel = Array.IndexOf(Levels, SceneManager.GetActiveScene().name);
     }
 
     public void SetFirstLevel()
@@ -29,26 +31,26 @@ public class LevelManager : MonoBehaviour
 
     public void SetNextLevel()
     {
-        if (CurrentLevel < Levels.Length)
+        if (CurrentLevel < Levels.Length-1)
         {
             CurrentLevel++;
             LoadCurrentLevel();
         }
         else
         {
-            Debug.Log("Последний уровень пройден");
+            SceneManager.LoadScene("StartScene");
         }
     }
 
     public void LoadCurrentLevel()
     {
-        if (CurrentLevel == 0)
+        if (CurrentLevel == -1)
         {
             SceneManager.LoadScene("StartScene");
         }
         else
         {
-            SceneManager.LoadScene(Levels[CurrentLevel-1]);
+            SceneManager.LoadScene(Levels[CurrentLevel]);
         }
     }
 }
