@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletPool : MonoBehaviour
+public class BulletPoolOld : MonoBehaviour
 {
-    public static BulletPool Instance;
+    public static BulletPoolOld Instance;
 
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private int initialCapacity = 100;

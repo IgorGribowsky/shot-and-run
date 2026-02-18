@@ -5,12 +5,12 @@ public class BulletScript : MonoBehaviour
     private float deadTimer;
 
     private PlayerValues _playerValues;
-    private BulletPool _bulletPool;
+    private BulletPoolOld _bulletPool;
 
     // Start is called before the first frame update
     void Awake()
     {
-        _bulletPool = GameObject.FindGameObjectWithTag("LevelController").GetComponent<BulletPool>();
+        _bulletPool = GameObject.FindGameObjectWithTag("LevelController").GetComponent<BulletPoolOld>();
         _playerValues = GameObject.FindGameObjectWithTag("LevelController").GetComponent<PlayerValues>();
     }
 

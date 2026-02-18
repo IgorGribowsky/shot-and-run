@@ -1,12 +1,14 @@
+using Scellecs.Morpeh;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Zenject;
 
 public class LevelController : MonoBehaviour
 {
     public GameObject Plate;
-    public Level level;
+    public LevelOld level;
     public Camera m_camera;
 
     public float MinX { get; set; }
@@ -25,6 +27,9 @@ public class LevelController : MonoBehaviour
     private const float bossFightCameraXAng = 30f;
     private bool rotateCamera = false;
     // Start is called before the first frame update
+
+    [Inject] private World _world;
+    [Inject] private DiContainer _container;
 
     void Start()
     {
@@ -108,7 +113,14 @@ public class LevelController : MonoBehaviour
         const float dX = 5;
         var currentWave = level.Waves[currentWaveNum];
 
-        var connectedArchs = new List<Bonus>();
+        var waveEntity = _world.CreateEntity();
+        var waveStash = _world.GetStash<Wave>();
+        waveStash.Add(waveEntity);
+        var waveIdStash = _world.GetStash<WaveIdentity>();
+        ref var waveIdentity = ref waveIdStash.Add(waveEntity);
+        waveIdentity.Value = currentWaveNum;
+
+        var connectedArchs = new List<BonusGain>();
         var archs = new List<GameObject>();
 
         for (int i = 0; i < level.TrackCount; i++)
@@ -121,12 +133,18 @@ public class LevelController : MonoBehaviour
                 var xPos = isBoss 
                     ? XLeftShift + (level.TrackCount / 2.0f - 0.5f) * dX
                     : XLeftShift + i * dX;
-                var obj = Instantiate(objective, new Vector3(xPos, yPos, 35), objective.transform.rotation);
+                var obj = _container.InstantiatePrefab(
+                    objective,
+                    new Vector3(xPos, yPos, 35),
+                    objective.transform.rotation,
+                    null
+                );
 
                 if (obj.tag == "Arch")
                 {
-                    connectedArchs.Add(obj.GetComponent<Bonus>());
+                    connectedArchs.Add(obj.GetComponent<BonusGain>());
                     archs.Add(obj);
+                    obj.GetComponent<ArchAuthoring>().SetWaveId(currentWaveNum);
                 }
 
                 var objHp = obj.GetComponent<HealthPoints>();
@@ -166,17 +184,17 @@ public class LevelController : MonoBehaviour
 
 
 [Serializable]
-public class Level
+public class LevelOld
 {
     public float WaveRate = 10f;
 
     public int TrackCount = 2;
 
-    public List<Wave> Waves = new List<Wave>();
+    public List<WaveEn> Waves = new List<WaveEn>();
 }
 
 [Serializable]
-public class Wave
+public class WaveEn
 {
     public float Hp = 10;
     public List<GameObject> Objectives = new List<GameObject>();

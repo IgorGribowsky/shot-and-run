@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using Zenject;
 
 public class UnitController : MonoBehaviour
 {
@@ -17,6 +18,8 @@ public class UnitController : MonoBehaviour
 
     private Canvas _countCanvas;
     private TMP_Text _countText;
+
+    [Inject] private DiContainer _container;
 
     // Start is called before the first frame update
     void Start()
@@ -98,7 +101,7 @@ public class UnitController : MonoBehaviour
         for (int i = 0; i < num; i++)
         {
             var randomVector2 = Random.insideUnitCircle;
-            var createdUnit = GameObject.Instantiate(_playerValues.Unit, positionToAdd + new Vector3(randomVector2.x, 0, randomVector2.y) * 2.0f + Vector3.one * 0.1f, _playerValues.Unit.transform.rotation);
+            var createdUnit = _container.InstantiatePrefab(_playerValues.Unit, positionToAdd + new Vector3(randomVector2.x, 0, randomVector2.y) * 2.0f, _playerValues.Unit.transform.rotation, null);
 
             Units.Add(createdUnit);
 

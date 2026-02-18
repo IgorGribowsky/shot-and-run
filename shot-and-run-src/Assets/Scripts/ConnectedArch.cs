@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class ConnectedArch : MonoBehaviour
 {
-    public List<Bonus> ArchBonuses = new List<Bonus>();
+    public List<BonusGain> ArchBonuses = new List<BonusGain>();
 
     public void InactiveAllConnectedBonuses()
     {

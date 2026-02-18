@@ -7,8 +7,8 @@ public class HealthPoints : MonoBehaviour
     public Canvas HPCanvas;
 
     private PlayerValues _playerValues;
-    private BulletPool _bulletPool;
-    private Bonus _bonus;
+    private BulletPoolOld _bulletPool;
+    private BonusGain _bonus;
 
     private Canvas _hpCanvas;
     private TMP_Text _hpText;
@@ -17,8 +17,8 @@ public class HealthPoints : MonoBehaviour
     void Start()
     {
         _playerValues = GameObject.FindGameObjectWithTag("LevelController").GetComponent<PlayerValues>();
-        _bulletPool = GameObject.FindGameObjectWithTag("LevelController").GetComponent<BulletPool>();
-        _bonus = GetComponent<Bonus>();
+        _bulletPool = GameObject.FindGameObjectWithTag("LevelController").GetComponent<BulletPoolOld>();
+        _bonus = GetComponent<BonusGain>();
         _hpCanvas = GameObject.Instantiate(HPCanvas);
         _hpCanvas.transform.SetParent(transform, false);
         foreach (Transform child in _hpCanvas.transform)

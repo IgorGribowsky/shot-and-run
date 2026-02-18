@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class UnitCollision : MonoBehaviour
@@ -28,7 +25,7 @@ public class UnitCollision : MonoBehaviour
 
         if (other.gameObject.tag == "Arch")
         {
-            other.gameObject.GetComponent<Bonus>().GetAward();
+            other.gameObject.GetComponent<BonusGain>().GetAward();
         }
     }
 }

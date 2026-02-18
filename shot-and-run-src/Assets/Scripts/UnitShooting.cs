@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Rendering;
 
 public class UnitShooting : MonoBehaviour
 {
@@ -9,13 +8,13 @@ public class UnitShooting : MonoBehaviour
     private float rate;
 
     private PlayerValues _playerValues;
-    private BulletPool _bulletPool;
+    private BulletPoolOld _bulletPool;
 
     // Start is called before the first frame update
     void Start()
     {
         _playerValues = GameObject.FindGameObjectWithTag("LevelController").GetComponent<PlayerValues>();
-        _bulletPool = GameObject.FindGameObjectWithTag("LevelController").GetComponent<BulletPool>();
+        _bulletPool = GameObject.FindGameObjectWithTag("LevelController").GetComponent<BulletPoolOld>();
 
         if (_playerValues.AttackSpeed > 0)
         {

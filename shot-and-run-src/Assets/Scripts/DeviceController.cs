@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DeviceController : MonoBehaviour
 {
-    private AndroidController androidController;
-    private WindowsController windowsController;
+    private AndroidControllerOld androidController;
+    private WindowsControllerOld windowsController;
 
     public bool useAndroidController = false; 
 
@@ -30,20 +28,14 @@ public class DeviceController : MonoBehaviour
 
     private void UseAndroid()
     {
-        androidController = GetComponent<AndroidController>();
+        androidController = GetComponent<AndroidControllerOld>();
         androidController.joystick.gameObject.SetActive(true);
         androidController.enabled = true;
     }
 
     private void UseWindows()
     {
-        windowsController = GetComponent<WindowsController>();
+        windowsController = GetComponent<WindowsControllerOld>();
         windowsController.enabled = true;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

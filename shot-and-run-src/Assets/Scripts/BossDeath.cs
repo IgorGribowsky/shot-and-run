@@ -4,7 +4,7 @@ public class BossDeath : MonoBehaviour
 {
     public GameObject Menu;
     private HealthPoints _healthPoints;
-    private MenuScript _menuScript;
+    private MenuController _menuScript;
     private UnitController _unitController;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -13,11 +13,11 @@ public class BossDeath : MonoBehaviour
         _healthPoints = GetComponent<HealthPoints>();
         if (Menu != null)
         {
-            _menuScript = Menu.GetComponent<MenuScript>();
+            _menuScript = Menu.GetComponent<MenuController>();
         }
         else
         {
-            _menuScript = GameObject.FindGameObjectWithTag("Menu").GetComponent<MenuScript>();
+            _menuScript = GameObject.FindGameObjectWithTag("Menu").GetComponent<MenuController>();
         }
 
         _unitController = GameObject.FindGameObjectWithTag("LevelController").GetComponent<UnitController>();

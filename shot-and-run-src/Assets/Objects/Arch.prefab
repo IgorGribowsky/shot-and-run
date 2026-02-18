@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 973543727790239938}
   - component: {fileID: 4192115995519762279}
   - component: {fileID: 2146409426886642605}
-  - component: {fileID: 7241599790798980956}
   - component: {fileID: 3758008662698994164}
-  - component: {fileID: 4671396611986203972}
-  - component: {fileID: -3110966381379170912}
+  - component: {fileID: -9214823251190371172}
+  - component: {fileID: -7251981661105907213}
+  - component: {fileID: 90166379716946516}
   m_Layer: 0
   m_Name: Arch
   m_TagString: Arch
@@ -64,6 +64,9 @@ MeshRenderer:
   m_RayTraceProcedural: 0
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -85,22 +88,11 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &7241599790798980956
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 489036866378492536}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e79a2dc1fe4c03147bf862c3403e47b5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &3758008662698994164
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -122,7 +114,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.5003542, y: 1.5547537, z: 2.290302}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4671396611986203972
+--- !u!114 &-9214823251190371172
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -131,12 +123,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 489036866378492536}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b78263a69bd92714884b8ba209703e52, type: 3}
+  m_Script: {fileID: 11500000, guid: 8870fa8645622fd43bb5f39c4868d82e, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
-  ZDeadLine: -10
-  Speed: 5
---- !u!114 &-3110966381379170912
+  m_EditorClassIdentifier: Assembly-CSharp::ArchAuthoring
+--- !u!114 &-7251981661105907213
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -145,9 +135,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 489036866378492536}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85c95511234924448b0f65a7bd465bc8, type: 3}
+  m_Script: {fileID: 11500000, guid: b30c30ae05706c94493772ae9102bbf7, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
-  bonusSign: 0
-  Value: 2
+  m_EditorClassIdentifier: Assembly-CSharp::BonusAuthoring
   BonusCanvas: {fileID: 113381601981767955, guid: c6521210c6067ce41b6f75561974b688, type: 3}
+--- !u!114 &90166379716946516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 489036866378492536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bb6c606856911d4aa353843e8679a78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UnitTriggerHandler
