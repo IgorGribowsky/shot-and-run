@@ -42,7 +42,7 @@ public class ArmyAuthoring : MonoBehaviour, IEntityAuthoring
         _unitsCountStash = _world.GetStash<UnitsCount>();
         _armyCountCanvasStash = _world.GetStash<ArmyCountCanvas>();
 
-        _armyCountCanvasInstance = Instantiate(ArmyCountCanvas.gameObject);
+        _armyCountCanvasInstance = Instantiate(ArmyCountCanvas.gameObject, gameObject.transform.position, Quaternion.identity);
         _armyCountCanvasObj = _armyCountCanvasInstance.GetComponent<Canvas>();
 
         ConfigureComponents();

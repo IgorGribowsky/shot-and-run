@@ -1,3 +1,4 @@
+using Assets.Scripts.Domen.Constants;
 using Assets.Scripts.Domen.Enums;
 using Assets.Scripts.Domen.Helpers;
 using Scellecs.Morpeh;
@@ -24,7 +25,7 @@ public class BonusAuthoring : MonoBehaviour
         _bonusStash = _world.GetStash<Bonus>();
         _bonusCanvasStash = _world.GetStash<BonusCanvas>();
 
-        _bonusCanvasInstance = Instantiate(BonusCanvas.gameObject);
+        _bonusCanvasInstance = Instantiate(BonusCanvas.gameObject, gameObject.transform.position, Quaternion.identity);
         _bonusCanvasObj = _bonusCanvasInstance.GetComponent<Canvas>();
     }
 
