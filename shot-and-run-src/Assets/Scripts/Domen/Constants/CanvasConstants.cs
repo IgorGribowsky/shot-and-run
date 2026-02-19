@@ -4,8 +4,6 @@ namespace Assets.Scripts.Domen.Constants
 {
     public static class CanvasConstants
     {
-        public static Vector3 DefaultRotation = new Vector3(0, 90, 0);
-
         public const string Tag = "CanvasText";
 
         public static Vector3 ArmyCountCanvasOffset = new Vector3(0, 2.5f, 0);

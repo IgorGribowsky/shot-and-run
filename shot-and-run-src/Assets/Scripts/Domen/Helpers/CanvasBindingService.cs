@@ -14,7 +14,6 @@ namespace Assets.Scripts.Domen.Helpers
             if (canvasObj == null) throw new ArgumentNullException(nameof(canvasObj));
 
             var canvasTransform = canvasObj.transform;
-            canvasTransform.Rotate(CanvasConstants.DefaultRotation);
 
             var text = FindTextInChild(canvasTransform);
 

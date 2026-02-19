@@ -22,7 +22,7 @@ public class HealthAuthoring : MonoBehaviour
         _healthStash = _world.GetStash<Health>();
         _healthCanvasStash = _world.GetStash<HealthCanvas>();
 
-        _healthCanvasInstance = Instantiate(HealthCanvas.gameObject);
+        _healthCanvasInstance = Instantiate(HealthCanvas.gameObject, gameObject.transform.position, Quaternion.identity);
         _healthCanvasObj = _healthCanvasInstance.GetComponent<Canvas>();
     }
 
