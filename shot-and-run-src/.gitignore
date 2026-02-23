@@ -14,6 +14,7 @@
 /[Uu]ser[Ss]ettings/
 /[Aa]ssets/GeneratedLocalRepo/
 /[Aa]ssets/google-services.json
+/[Aa]ssets/StreamingAssets/google-services-desktop.json
 
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
