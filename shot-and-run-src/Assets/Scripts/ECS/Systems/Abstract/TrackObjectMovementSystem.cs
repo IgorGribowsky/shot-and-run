@@ -1,5 +1,8 @@
-﻿using Scellecs.Morpeh;
+﻿using Assets.Scripts.Firebase.Interfaces;
+using Firebase.RemoteConfig;
+using Scellecs.Morpeh;
 using UnityEngine;
+using Zenject;
 
 namespace Assets.Scripts.ECS.Systems
 {
@@ -14,6 +17,8 @@ namespace Assets.Scripts.ECS.Systems
         private Filter _filter;
 
         private const float ZDeadLine = -10f;
+
+        [Inject] private IRemoteConfigStore _remoteConfig;
 
         public virtual void OnAwake()
         {
@@ -35,7 +40,7 @@ namespace Assets.Scripts.ECS.Systems
         public virtual void OnUpdate(float deltaTime)
         {
             var speed = BalanceConfigStash.Get(_levelEntity).ObstacleSpeed;
-            var vz = deltaTime * speed;
+            var vz = deltaTime * speed * _remoteConfig.DifficultyModifier;
 
             foreach (var entity in _filter)
             {

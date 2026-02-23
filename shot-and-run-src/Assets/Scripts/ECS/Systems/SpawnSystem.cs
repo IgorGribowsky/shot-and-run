@@ -1,5 +1,6 @@
 ﻿using Assets.Scripts.Domen.Enums;
 using Assets.Scripts.Domen.Factories;
+using Assets.Scripts.Firebase.Interfaces;
 using Scellecs.Morpeh;
 using System.Linq;
 using Zenject;
@@ -24,6 +25,7 @@ namespace Assets.Scripts.ECS.Systems
         private bool _stop = false;
 
         [Inject] ITrackObjectFactory _trackObjectFactory;
+        [Inject] private IRemoteConfigStore _remoteConfig;
 
         public void OnAwake()
         {
@@ -61,7 +63,7 @@ namespace Assets.Scripts.ECS.Systems
                 ref var balance = ref _balanceConfigStash.Get(_levelEntity);
                 ref var wavesInfo = ref _wavesInfoStash.Get(_levelEntity);
 
-                _timer = balance.WaveRate;
+                _timer = balance.WaveRate * (1.0f / _remoteConfig.DifficultyModifier);
 
                 Spawn(ref wavesInfo, ref balance);
 

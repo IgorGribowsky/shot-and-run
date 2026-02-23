@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6540475554262805635}
   - component: {fileID: 1152510564516675777}
   - component: {fileID: 7485192581944088880}
+  - component: {fileID: -3880740855445068813}
   m_Layer: 0
   m_Name: ProjectContext
   m_TagString: Untagged
@@ -48,6 +49,7 @@ MonoBehaviour:
   _scriptableObjectInstallers: []
   _monoInstallers:
   - {fileID: 7485192581944088880}
+  - {fileID: -3880740855445068813}
   _installerPrefabs: []
   _parentNewObjectsUnderContext: 1
   _editorReflectionBakingCoverageMode: 0
@@ -75,8 +77,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GlobalInstaller
   LevelManagerPrefab: {fileID: 4131412046594868861, guid: 67f51fc460520c54dbd2a77dabe1f61b, type: 3}
-  UnitPrefab: {fileID: 191298059050307108, guid: b5dca9a0c62737f4d840628fae813433, type: 3}
-  BarrelPrefab: {fileID: 8765575750655147147, guid: f3996ab146785b847abf3e50b8e40cb8, type: 3}
-  ArchPrefab: {fileID: 489036866378492536, guid: 6375bf1bf0b6787499f485397f78c227, type: 3}
-  BossPrefab: {fileID: 0}
-  BulletPrefab: {fileID: 6898231368475539652, guid: cfeb6044690a6c44e8b3e3a044ed1d52, type: 3}
+--- !u!114 &-3880740855445068813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8655302781450828095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fbb4ac1491c14546ba0a13a3500015e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FirebaseInstaller
+  FirebaseInitializerPrefab: {fileID: 5549979946815974435, guid: 2d710a8844d45a24aabe8c2878524919, type: 3}

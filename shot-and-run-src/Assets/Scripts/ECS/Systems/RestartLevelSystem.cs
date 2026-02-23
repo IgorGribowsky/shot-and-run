@@ -1,4 +1,7 @@
-﻿using Scellecs.Morpeh;
+﻿using Assets.Scripts.Firebase;
+using Assets.Scripts.Firebase.Events;
+using Assets.Scripts.Firebase.Interfaces;
+using Scellecs.Morpeh;
 using Zenject;
 
 namespace Assets.Scripts.ECS.Systems
@@ -12,6 +15,7 @@ namespace Assets.Scripts.ECS.Systems
         private Entity _armyEntity;
 
         [Inject] private LevelManager _levelManager;
+        [Inject] private IEventSender _eventSender;
 
         public void OnAwake()
         {
@@ -32,6 +36,7 @@ namespace Assets.Scripts.ECS.Systems
 
             if (unitsCount <= 0)
             {
+                _eventSender.SendEvent(new PlayerLostEvent(_levelManager.CurrentLevel, -1));
                 _levelManager.LoadCurrentLevel();
             }
         }

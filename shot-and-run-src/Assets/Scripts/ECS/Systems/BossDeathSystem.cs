@@ -1,4 +1,6 @@
-﻿using Scellecs.Morpeh;
+﻿using Assets.Scripts.Firebase.Events;
+using Assets.Scripts.Firebase.Interfaces;
+using Scellecs.Morpeh;
 using UnityEngine;
 using Zenject;
 
@@ -16,7 +18,9 @@ namespace Assets.Scripts.ECS.Systems
 
         private Entity _armyEntity;
 
-        [Inject] MenuController _menuController;
+        [Inject] private IEventSender _eventSender;
+        [Inject] private LevelManager _levelManager;
+        [Inject] private MenuController _menuController;
 
         public void OnAwake()
         {
@@ -46,9 +50,10 @@ namespace Assets.Scripts.ECS.Systems
                     ref var view = ref _viewStash.Get(boss);
                     Object.Destroy(view.Transform.gameObject);
 
-                    ref var untisCount = ref _unitsCountStash.Get(_armyEntity);
+                    var score = _unitsCountStash.Get(_armyEntity).Value;
 
-                    _menuController.SetField("score", untisCount.Value.ToString());
+                    _eventSender.SendEvent(new LevelCompletedEvent(_levelManager.CurrentLevel, score));
+                    _menuController.SetField("score", score.ToString());
                     _menuController.Show();
                 }
             }
